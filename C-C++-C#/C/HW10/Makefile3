@@ -1,0 +1,24 @@
+CC=gcc
+CFLAGS=-c -Wall
+
+all: hw10-JohnNeis.o libhw10.so
+	$(CC) hw10-JohnNeis.o -L. -lhw10 -o hw10
+	LD_LIBRARY_PATH=. ./hw10
+	
+hw10-JohnNeis.o: hw10-JohnNeis.c
+	$(CC) $(CFLAGS) hw10-JohnNeis.c
+
+libhw10.so: hw10-A-JohnNeis.o hw10-B-JohnNeis.o hw10-C-JohnNeis.o
+	$(CC) -shared hw10-A-JohnNeis.o hw10-B-JohnNeis.o hw10-C-JohnNeis.o -o libhw10.so
+
+hw10-A-JohnNeis.o: hw10-A-JohnNeis.c
+	$(CC) $(CFLAGS) -fPIC hw10-A-JohnNeis.c
+	
+hw10-B-JohnNeis.o: hw10-B-JohnNeis.c
+	$(CC) $(CFLAGS) -fPIC hw10-B-JohnNeis.c
+	
+hw10-C-JohnNeis.o: hw10-C-JohnNeis.c
+	$(CC) $(CFLAGS) -fPIC hw10-C-JohnNeis.c
+	
+clean:
+	rm -rf *.o *.so hw10

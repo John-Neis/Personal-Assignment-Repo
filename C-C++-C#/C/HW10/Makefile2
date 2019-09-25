@@ -1,0 +1,23 @@
+CC=gcc
+CFLAGS=-c -Wall
+
+all: hw10-JohnNeis.o libhw10-lib-JohnNeis.a
+	$(CC) -static hw10-JohnNeis.o -L. -lhw10-lib-JohnNeis -o hw10
+	
+hw10-JohnNeis.o: hw10-JohnNeis.c
+	$(CC) $(CFLAGS) hw10-JohnNeis.c
+
+libhw10-lib-JohnNeis.a: hw10-A-JohnNeis.o hw10-B-JohnNeis.o hw10-C-JohnNeis.o
+	ar rcs libhw10-lib-JohnNeis.a hw10-A-JohnNeis.o hw10-B-JohnNeis.o hw10-C-JohnNeis.o
+
+hw10-A-JohnNeis.o: hw10-A-JohnNeis.c
+	$(CC) $(CFLAGS) hw10-A-JohnNeis.c
+	
+hw10-B-JohnNeis.o: hw10-B-JohnNeis.c
+	$(CC) $(CFLAGS) hw10-B-JohnNeis.c
+	
+hw10-C-JohnNeis.o: hw10-C-JohnNeis.c
+	$(CC) $(CFLAGS) hw10-C-JohnNeis.c
+	
+clean:
+	rm -rf *.o *.a hw10

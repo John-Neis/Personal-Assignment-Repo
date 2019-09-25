@@ -1,0 +1,35 @@
+HW-9	CS230		20 points	Due: November 5, 2018
+
+On this date in 1725 Spain & Austria signed a secret treaty, 
+but it's a secret so nobody knows why.
+
+Write a program that opens a file of integers and generates
+a BINARY tree using that data. The file format will be one
+integer per line. The file will be called hw9.data. You do not
+know how big the file will be so you will need to create a
+dynamic array to hold the data. You will also need to sort 
+the data and then parse it using the recursive function I
+showed in class. 
+
+As you generate the tree you must also create a linked list
+that POINTS to the same nodes.
+
+Your code must do a pre-, in-, and post-order traversal of
+the tree and a traversal of the linked list. These must be
+four seperate functions.
+
+Your program must also correctly free all links of the TREE
+and LIST on termination (note that with the extra linked list
+this should be very easy). This MUST be a seperate function.
+
+You have all of the code you need in your class notes. You 
+just need to figure out to combine them.
+
+REQUIREMENTS:
+-------------
+1. Your program must run on Linux Mint.
+
+2. Your full name must appear as a comment at the beginning 
+   of your program.
+
+3. Your source code must be named hw9-yourname.c

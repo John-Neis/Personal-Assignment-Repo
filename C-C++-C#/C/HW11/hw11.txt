@@ -1,0 +1,50 @@
+HW-11	CS230		10 points	Due: Monday, December 3
+
+On December 3, 1949, "Ozzy" Osbourne, also known as The Prince of 
+Darkness, was born. Hopefully, this assignment will not be very scary.
+
+Write a program that uses a pointer-based linked list. You should 
+use the following struct (declared as a global):
+
+   struct node {
+      char name[10];
+      struct node *next;
+   };
+
+Note that no other variables can be global.
+
+To populate your linked list open the hw11.data file and read in the 
+contents. The file format is as follows: name op_code
+  For example:
+  Vlad a
+  Cullen a
+  Morticia a
+  Ophelia a
+  Smurf a
+  Morticia d
+
+The name will be a string. The op_code will be a character ('a' or 'd'), 
+where 'a' indicates that you should add this person to the linked-list, 
+'d' indicates that you should delete this person from the linked-list. 
+Note that when you add a person you must add them in increasing order. I.e.
+we are adding them as an insertion sort (no, you cannot presort the list). 
+This MUST be seperate functions (adding and deleting).
+
+You also need to provide output that proves your program works. After 
+the last data item has been processed, your program must display the 
+contents of the linked-list. This MUST be a seperate function.
+
+Your program must also correctly free all links of the list on termination. 
+This MUST be a seperate function.
+
+Hmmm. Here's a thought. Since the struct char name can only hold 10 
+characters, how would you prevent a buffer overflow?
+
+REQUIREMENTS:
+-------------
+1. Your program must run on Linux Mint in Leonard 110 or 112.
+
+2. Your full name must appear as a comment at the beginning of your 
+   program.
+
+3. Your source code must be named hw11-yourname.c

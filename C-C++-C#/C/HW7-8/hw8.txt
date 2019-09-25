@@ -1,0 +1,100 @@
+HW-7/8	CS230	50 points	Due: October 22, 2018
+
+On this day in 1861, the first telegraph line linking West & 
+East coasts was completed. However, the operators were
+terrible spellers. So we will create a program to help
+fix that problem.
+
+Write a program that uses a pointer-based linked list to 
+manage a spell checker/translator. 
+
+-------------------------------------------------------------
+
+1. Your program must read in each word of the input file
+(hw8data.txt) and put each word into a separate link in 
+a linked list (you *MUST* create a pointer-based linked 
+list for this). For each word, you need to create a link 
+that can hold that word precisely (i.e. the payload section 
+must be sized specifically for each word). In other words, 
+your structure for the linked list *CANNOT* look like this:
+
+   struct node {
+      char word[n];
+      struct node *next;
+   }
+
+It *MUST* look like this:
+
+   struct node {
+      char *word;
+      struct node *next;
+   }
+
+The difference is that in the required form, there is no
+space allocated for the text. You will have to use malloc/calloc
+to allocate that space. However, you can use a static array of 
+length 42 to read the words from the file.
+
+-------------------------------------------------------------
+
+2. You need to create a second word linked list that contains 
+the “correct” word for each word in the hw8data.txt file. By 
+“correct,” I mean a word that when it replaces the matching
+word in the hw8data.txt file the poem makes sense. We will call
+this the codex file.
+
+3. Your program must read in each word of the codex file
+(hw8codex.txt) and put each word into a separate link in the 
+linked list (you *MUST* create a pointer-based linked list for 
+this). For each word, you need to create a link that can hold 
+that word precisely (i.e. the payload section must be sized 
+specifically for each word). In other words, the same rules 
+apply for this linked list as in the first linked-list. Your 
+structure for the linked list *MUST* look like this:
+
+   struct codex {
+      char *word1;
+      char *word2;
+      struct codex *next;
+   }
+
+At this point you MUST have 2 linked lists.
+
+4. You must traverse the hw8data linked list replacing 
+each word with the translated word from the hw8codex 
+linked list. In some cases the existing word will be removed 
+(e.g. "plane" "lee" may become "plainly" so "lee" must be 
+removed from the linked list). In other cases the codex word
+may be longer or shorter than the original word, in these 
+cases the original link must be deleted and replaced with a 
+new link. This guarantees that the memory consumption will 
+be optimal/minimal. You can do this with every replaced word 
+if you like. You **CANNOT** simply create a third linked list, 
+you are only allowed to have 2 linked lists, in total.
+
+5. You must traverse the hw8data linked list displaying the 
+corrected poem. The display MUST have the same exact format
+as the hw8data.txt file. This means you will have to keep track
+of puncuation marks and line feeds.
+
+WARNING:
+--------
+!!!You cannot use **ANY** static arrays!!!
+
+-------------------------------------------------------------
+
+6. Create seperate functions that insert into the two linked lists
+(LIST_INSERT_POEM() and LIST_INSERT_CODEX()). Create a function that
+corrects that poem (LIST_CORRECT()). Create a function to display/traverse
+the corrected poem (LIST_DISPLAY()). Create seperate functions that 
+free the two linked lists (LIST_FREE_POEM() and LIST_FREE_CODEX()).
+
+REQUIREMENTS:
+-------------
+1. Your program must run on Mint
+
+2. Your full name must appear as a comment at the beginning of your 
+   program.
+
+3. Your source code must be named hw8-yourname.c
+

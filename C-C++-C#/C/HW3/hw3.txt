@@ -1,0 +1,39 @@
+HW-3	CS230	10 points	Due: Monday. 9/17/2018
+
+Write a program to alphabetically merge the three word list files 
+(american0.txt, american1.txt, and american2.txt). The output must 
+be a file called words.txt.
+
+Note that you cannot cheat by using Linux commands to do this. It must
+be done entirely in your C code.
+
+File format:
+word1
+word3
+word4
+  .
+  .
+  .
+
+Hint:
+Foghorn Leghorn: I need, I say, I need a (double) pointer, and 
+that dog's got just the head for it. Pointed, that is. 
+
+More Hints:
+1. Assume no word is bigger that 50 characters.
+2. Determine file sizes first.
+3. Create a single dynamic array to hold all of the words.
+4. Write result to words.txt.
+5. man 3 malloc or calloc.
+6. man 3 strcmp and strcpy.
+7. man 3 feof.
+
+
+REQUIREMENTS:
+-------------
+1. Your program must run on Mint.
+
+2. Your full name must appear as a comment at the beginning of your 
+   program.
+
+3. Your source code must be named hw3-yourname.c

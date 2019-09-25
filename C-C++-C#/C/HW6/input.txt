@@ -1,0 +1,1 @@
+Some words will have their first character uppercase due to being at the beginning of a sentence, so you must correct for uppercase first characters.
