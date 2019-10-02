@@ -6,10 +6,11 @@ void setup() {
 }
 
 void draw() {
+  noStroke();
+  fill(0, 0, 0, 15);
+  rect(0, 0, width, height);
   stroke(0, 255, 0);
   strokeWeight(0.5);
-  fill(0, 0, 0, 10);
-  rect(0, 0, width, height);
   noFill();
   translate(width / 2, height / 2);
   
