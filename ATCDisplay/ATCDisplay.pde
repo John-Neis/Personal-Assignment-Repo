@@ -1,3 +1,6 @@
+/* ATC Display prototype                             */
+/* Concept for CSCI 363 @ University of North Dakota */
+
 float angle = 0;
 
 void setup() {
