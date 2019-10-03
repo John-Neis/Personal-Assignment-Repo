@@ -10,7 +10,7 @@ void setup() {
 
 void draw() {
   noStroke();
-  fill(0, 0, 0, 15);
+  fill(0, 0, 0, 70);
   rect(0, 0, width, height);
   stroke(0, 255, 0);
   strokeWeight(0.5);
@@ -43,7 +43,7 @@ void draw() {
   stroke(0, 255, 0);
   line(0, 0, (width - width * 0.1) / 2 * cos(angle), (width - width * 0.1) / 2 * sin(angle));
   if(angle <= TWO_PI) {
-    angle += 0.001;
+    angle += 0.01;
   } else { 
     angle = 0;
   }
