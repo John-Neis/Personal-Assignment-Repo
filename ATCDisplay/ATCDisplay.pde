@@ -41,10 +41,12 @@ void draw() {
   
   strokeWeight(0.5);
   stroke(0, 255, 0);
-  line(0, 0, (width - width * 0.1) / 2 * cos(angle), (width - width * 0.1) / 2 * sin(angle));
+  //line(0, 0, (width - width * 0.1) / 2 * cos(angle), (width - width * 0.1) / 2 * sin(angle));
   if(angle <= TWO_PI) {
     angle += 0.01;
   } else { 
     angle = 0;
   }
+  //saveFrame("dispShot.png");
+  //noLoop();
 }
