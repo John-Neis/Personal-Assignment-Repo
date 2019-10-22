@@ -6,7 +6,7 @@ public class FooBar {
 
 	public static void main(String[] args) {
 	    //FooBar myBar = new FooBar();
-		int x, y, z;
+		int x,y,z;
 		boolean t, f, idk;
 		double pi, notpi, whereIsMyPie, e;
 		String hello, daddy, myNameIs, Sexy;

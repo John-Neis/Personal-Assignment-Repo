@@ -21,12 +21,13 @@ while(chomp($input = <JAVAFILE>)) {
 	
 	$input =~ s/^\s+//;
 	
-	if($input =~ /$type\s+(\w+)(\(.*\))/g) {
+	if($input =~ /$type\s+(\w+)(\(.*\))/) {
 		$vars{"Method"} = $vars{"Method"} . " " . $2;
 	} 
-	elsif($input =~ /$type\s+(\w+)((,\s+\w+)+)?/g) {
-		
-		my @fixed = split(/,\s+/, $3);
+	elsif($input =~ /$type\s+(\w+)((,\s*\w+)+)?/) {
+		print "$1 : $2 : $3\n";
+		print "$input\n\n";
+		my @fixed = split(/,\s*/, $3);
 		my $i;
 		for($i = 0, $i < scalar(@fixed), $i++) {
 			$fixed[$i] =~ s/^\s+//;
