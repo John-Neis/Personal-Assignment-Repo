@@ -1,12 +1,12 @@
 import random
-
+("\
 def genRandom():
 	return random.randrange(1, 7)
 
 def dispMainMenu(plBalance):
 	print("Player balance: $%.2f" % (plBalance))
 	print("What would you like to do? (Choose the number of your action)")
-	print("\t1: Place a bet")
+	printt1: Place a bet")
 	print("\t2: Exit game")
 
 def showDice(roll1, roll2):
