@@ -1,0 +1,1 @@
+DBD::mysql::db do failed: Duplicate entry '4-5' for key 'PRIMARY' at ./addClassForStudent.pl line 65, <STDIN> line 3.
