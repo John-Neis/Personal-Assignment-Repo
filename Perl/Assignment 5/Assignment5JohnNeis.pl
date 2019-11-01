@@ -18,7 +18,7 @@ sub connectToDB {
 					$dataSource, 
 					$user, 
 					$pwd, 
-					{PrintError => 0}
+					#{PrintError => 0}
 				);
 	if(!$handle) {
 		print "Unable to connect to database.\n";
@@ -52,6 +52,18 @@ sub showMenu {
 	return $input;
 }
 
+sub printQuery {
+	my $sth = shift;
+	print ">  Title                         |  Author              |  Total copies  |  Available  <\n";
+	while(my $hashRef = $sth->fetchrow_hashref) {
+		printf ">  %-30.30s|  %-20.20s|  %-14s|  %-11s<\n",
+				$hashRef->{'title'},
+				$hashRef->{'author'},
+				$hashRef->{'totalCopies'},
+				$hashRef->{'copiesAvailable'}
+		;
+	}
+}
 
 my $dbh = connectToDB;
 my ($sth, $sql);
@@ -84,15 +96,7 @@ while($continue eq 'y') {
 		$sth = $dbh->prepare($sql);
 		$sth->execute();
 		
-		print ">  Title          |  Author         |  Total copies  |  Available  <\n";
-		while(my $hashRef = $sth->fetchrow_hashref) {
-			printf ">%-17.17s|%-17.17s|  %-14s|  %-11s<\n",
-					$hashRef->{'title'},
-					$hashRef->{'author'},
-					$hashRef->{'totalCopies'},
-					$hashRef->{'copiesAvailable'}
-			;
-		}
+		printQuery($sth);
 		
 	} elsif($usrChoice == 3) {
 		
@@ -102,15 +106,7 @@ while($continue eq 'y') {
 		$sth = $dbh->prepare($sql);
 		$sth->execute();
 		
-		print ">  Title          |  Author         |  Total copies  |  Available  <\n";
-		while(my $hashRef = $sth->fetchrow_hashref) {
-			printf ">%-17.17s|%-17.17s|  %-14s|  %-11s<\n",
-					$hashRef->{'title'},
-					$hashRef->{'author'},
-					$hashRef->{'totalCopies'},
-					$hashRef->{'copiesAvailable'}
-			;
-		}
+		printQuery($sth);
 		
 	} elsif($usrChoice == 4) {
 	
