@@ -1,0 +1,34 @@
+classID	dept	classNum	title	grade	credits	semester	year	prof	ES
+	AVIT	372	Aviation History		3	F	19	Carlson	y
+	COMM	110	Fundamentals of Public Speaking	A	3	S	18	TA	n
+	CSCI	160	Computer Science I	A	4	F	17	Stokke	y
+	CSCI	161	Computer Science II	A	4	S	18	Nordlie	n
+	CSCI	230	Systems Programming	A	3	F	18	Marsh	n
+	CSCI	242	Algorithms and Data Structures	B	3	F	18	Kim	n
+	CSCI	260	Adv. Programming Languages		3	F	19	Stokke	n
+	CSCI	289	Soc Imp of Computer Technology	B	3	F	17	Grant	n
+	CSCI	363	User Interface Design		3	F	19	Grant	n
+	CSCI	365	Org of Programming Lang	A	3	S	19	Stokke	n
+	CSCI	370	Computer Architecture	B	4	S	19	Hu	n
+	ECON	201	Principles of Microeconomics	A	3	S	18	Teigen	y
+	EE	201	Introduction to Digital Electronics	A	2	F	18	Mardani	n
+	EE	201	Digital Electronics Lab	A	1	F	18	TA	n
+	ENGL	110	College Composition I	A	3		17	Nieusma	y
+	ENGL	130	Comp II: Writ for Pub Audience	A	3		17	Nieusma	y
+	FREN	101	First Year French I	A	4	F	17	Benoit	y
+	HIST	103	United States to 1877	A	3		17	Wakefield	y
+	HIST	104	United States since 1877	A	3		17	Wakefield	y
+	KIN	113	Racquet Sp Beg Badminton	A	1	S	19	TA	n
+	MATH	103	College Algebra						n
+	MATH	107	Precalculus						n
+	MATH	165	Calculus I	A	4		17	Hintz	y
+	MATH	166	Calculus II	A	4	F	17	Morstad	n
+	MATH	207	Introduction to Linear Algebra	A	2	S	18	Millspaugh	n
+	MATH	208	Discrete Mathematics	A	3	S	18	Iiams	n
+	MATH	265	Calculus III		4	F	19	Millspaugh	n
+	MATH	321	Applied Statistical Methods		3	F	19	Bartz	n
+	MATH	330	Set Theory and Logic	A	3	F	18	Peterson	n
+	MUSC	273	Instrumental Jazz Ensemble	A	1			Brooks/Pfeifer	y
+	PHYS	251	University Physics I	B	4	F	18	Marasinghe	y
+	PHYS	252	University Physics II	A	4	S	19	Cakir	y
+	POLS	115	American Government I	A	3		17	Stotts	y
