@@ -3,6 +3,7 @@ use strict;
 my $x;
 my $y;
 my ($intAnswer, $strAnswer, $answer1, $answer2, $z, $z1, $c);
+$hello = "21 Jump";
 
 $x = 10;
 $y = 20;
