@@ -1,4 +1,4 @@
-
+#!/usr/bin/perl
 open(PLAY, "SpotPlaylist.txt") or die("Couldn't open file.\n");
 
 $i = 0;
