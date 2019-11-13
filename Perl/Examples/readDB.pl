@@ -18,5 +18,11 @@ print "NameID|-------|FirstName|----|LastName|-----|City|---------|State\n";
 while($hashRef = $sth->fetchrow_hashref) {
 	#%hash = %$hashRef;
 	
-	printf "%-15s%-15s%-15s%-15s%-2s\n", $hashRef->{"NameID"}, $hashRef->{"FirstName"}, $hashRef->{"LastName"}, $hashRef->{"City"}, $hashRef->{"State"};
+	printf "%-15s%-15s%-15s%-15s%-2s\n", 
+		$hashRef->{"NameID"}, 
+		$hashRef->{"FirstName"}, 
+		$hashRef->{"LastName"}, 
+		$hashRef->{"City"}, 
+		$hashRef->{"State"}
+	;
 }
