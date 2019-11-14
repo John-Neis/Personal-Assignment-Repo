@@ -7,4 +7,13 @@ C:\Users\Jack\Desktop\Personal-Assignment-Repo\ATCDisplay\ATCDisplay\ATCDisplay\
 C:\Users\Jack\Desktop\Personal-Assignment-Repo\ATCDisplay\ATCDisplay\ATCDisplay\bin\Debug\ATCDisplay.pdb
 C:\Users\Jack\Desktop\Personal-Assignment-Repo\ATCDisplay\ATCDisplay\ATCDisplay\obj\Debug\ATCDisplay.exe
 C:\Users\Jack\Desktop\Personal-Assignment-Repo\ATCDisplay\ATCDisplay\ATCDisplay\obj\Debug\ATCDisplay.pdb
-C:\Users\Jack\Desktop\Personal-Assignment-Repo\ATCDisplay\ATCDisplay\ATCDisplay\obj\Debug\ATCDisplay.csproj.CoreCompileInputs.cache
+U:\Personal-Assignment-Repo-master\ATCDisplay\ATCDisplay\ATCDisplay\bin\Debug\ATCDisplay.exe.config
+U:\Personal-Assignment-Repo-master\ATCDisplay\ATCDisplay\ATCDisplay\bin\Debug\ATCDisplay.exe
+U:\Personal-Assignment-Repo-master\ATCDisplay\ATCDisplay\ATCDisplay\bin\Debug\ATCDisplay.pdb
+U:\Personal-Assignment-Repo-master\ATCDisplay\ATCDisplay\ATCDisplay\obj\Debug\ATCDisplay.csprojAssemblyReference.cache
+U:\Personal-Assignment-Repo-master\ATCDisplay\ATCDisplay\ATCDisplay\obj\Debug\ATCDisplay.ATCDisp.resources
+U:\Personal-Assignment-Repo-master\ATCDisplay\ATCDisplay\ATCDisplay\obj\Debug\ATCDisplay.Properties.Resources.resources
+U:\Personal-Assignment-Repo-master\ATCDisplay\ATCDisplay\ATCDisplay\obj\Debug\ATCDisplay.csproj.GenerateResource.cache
+U:\Personal-Assignment-Repo-master\ATCDisplay\ATCDisplay\ATCDisplay\obj\Debug\ATCDisplay.csproj.CoreCompileInputs.cache
+U:\Personal-Assignment-Repo-master\ATCDisplay\ATCDisplay\ATCDisplay\obj\Debug\ATCDisplay.exe
+U:\Personal-Assignment-Repo-master\ATCDisplay\ATCDisplay\ATCDisplay\obj\Debug\ATCDisplay.pdb
