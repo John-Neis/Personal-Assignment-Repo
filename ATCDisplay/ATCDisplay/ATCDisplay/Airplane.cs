@@ -39,24 +39,39 @@ namespace ATCDisplay
 
         public Airplane() // This constructor needs reworking. Do not use.
         {
-            string[] randDest = { "KGFK", "KMSP", "CYWG", "KDEN"};
+            string[] randDest = { "KDLH", "KMSO", "KMSP", "CYWG", "KDEN" };
             rand = new Random();
+
+            double rad = degToRad(rand.Next(0, 359));
+            this.posX = (int)(295 * Math.Cos(rad));
+            this.posY = (int)(295 * Math.Sin(rad));
+            this.posAlt = rand.Next(1, 20) * 1500;
+
             
-            this.posX     = (int)(295 * Math.Cos(rand.Next(0, (int)Math.PI * 2)));
-            orgX = posX;
-            this.posY     = (int)(295 * Math.Sin(rand.Next(0, (int)Math.PI * 2)));
-            orgY = posY;
-            this.posAlt   = rand.Next(1600, 35000);
-            this.vectX    = rand.Next(-20, 20);
-            this.vectY    = rand.Next(-20, 20);
-            this.speed    = (int)Math.Sqrt(Math.Pow(this.vectX, 2) + Math.Pow(this.vectY, 2));
-            this.dest     = randDest[rand.Next(0, 3)];
+            if (posAlt < 10000)
+            {
+                this.speed = 200;
+            }
+            else if (posAlt < 20000)
+            {
+                this.speed = 250;
+            }
+            else
+            {
+                this.speed = 300;
+            }
+
+            rad = degToRad(rand.Next(0, 359));
+            this.vectX = (int)(0.02 * speed * Math.Cos(rad));
+            this.vectY = (int)(0.02 * speed * Math.Sin(rad));
+
+            this.dest = randDest[rand.Next(0, randDest.Length - 1)];
             this.callSign = "" + (char)rand.Next(65, 90) + (char)rand.Next(65, 90) + rand.Next(100, 999);
         }
 
-        public void show(PaintEventArgs e, Pen p)
+        public void show(PaintEventArgs e, Pen p, int radius)
         {
-            bool showCondition = Math.Sqrt(Math.Pow(posX, 2) + Math.Pow(posY, 2)) <= 300;
+            bool showCondition = Math.Sqrt(Math.Pow(posX, 2) + Math.Pow(posY, 2)) <= radius;
             if(showCondition)
             {
                 e.Graphics.DrawLine(p, posX - 5, posY - 5, posX + 5, posY + 5);
@@ -100,6 +115,10 @@ namespace ATCDisplay
                    "Destination: " + dest + "\n";
             }
             
+        }
+        private double degToRad(double angle)
+        {
+            return Math.PI * angle / 180.0;
         }
     }
 }
