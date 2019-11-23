@@ -76,6 +76,7 @@ namespace ATCDisplay
 
         public void show(PaintEventArgs e, Pen p, int radius, int simMode)
         {
+            
             bool showCondition = Math.Sqrt(Math.Pow(posX, 2) + Math.Pow(posY, 2)) <= (6.0 / 5.0) * radius;
             switch (simMode)
             {
@@ -84,16 +85,28 @@ namespace ATCDisplay
                     {
                         //e.Graphics.DrawLine(p, posX - 5, posY - 5, posX + 5, posY + 5);
                         //e.Graphics.DrawLine(p, posX - 5, posY + 5, posX + 5, posY - 5);
+                        
+                        double deg = 0;
+                        if (vectX != 0) deg = 180 * Math.Atan(vectY / vectX) / Math.PI;
+                        else if (vectX == 0 && vectY < 0) deg = 0;
+                        else if (vectX == 0 && vectY > 0) deg = 180;
+                        else if (vectY == 0 && vectX < 0) deg = 270;
+                        else if (vectY == 0 && vectX > 0) deg = 90;
+                        
+                        if (deg < 0) deg += 360;
+                        e.Graphics.RotateTransform(90);
                         e.Graphics.FillEllipse(new SolidBrush(Color.White), new Rectangle(posX - 5, posY - 5, 10, 10));
-                        e.Graphics.DrawString(callSign + " " + dest + " " + ATCcontrol + "\n" + "", new Font("Courier New", 8), new SolidBrush(Color.White), posX + 7, posY - 5);
+                        e.Graphics.DrawString(callSign + " " + dest + " " + ATCcontrol + "\n" + posAlt + " " +
+                                              speed + " " + (int)deg, new Font("Courier New", 8), new SolidBrush(Color.White), posX + 7, posY - 5);
+                        e.Graphics.RotateTransform(-90);
                     }
                     else
                     {
                         posX = orgX;
                         posY = orgY;
                         double rad = Math.PI * rand.Next(0, 359) / 180.0;
-                        vectX = (int)(0.01 * speed * Math.Cos(rad));
-                        vectY = (int)(0.01 * speed * Math.Sin(rad));
+                        vectX = (int)(0.02 * speed * Math.Cos(rad));
+                        vectY = (int)(0.02 * speed * Math.Sin(rad));
                     }
                     break;
 
@@ -105,16 +118,19 @@ namespace ATCDisplay
                         {
                             setVector(0, -1 * (int)(0.01 * speed));
                         }
-                        if(posY < 78 && posY != 0)
+                        if(posY < 130 && posY != 0)
                         {
-                            posAlt = posY / 3;
+                            posAlt = posY / 5;
                         }
                         if(posY == 0)
                         {
                             setVector(1, 0);
                         }
                         e.Graphics.FillEllipse(new SolidBrush(Color.White), new Rectangle(posX - 5, posY - 5, 10, 10));
-                        e.Graphics.DrawString(callSign + " " + dest + " " + ATCcontrol + "\n" + "", new Font("Courier New", 8), new SolidBrush(Color.White), posX + 7, posY - 5);
+                        double deg = 0;
+                        if(vectY != 0) deg = 180 * Math.Atan(vectX / vectY) / Math.PI;
+                        e.Graphics.DrawString(callSign + " " + dest + " " + ATCcontrol + "\n" + posAlt + " " +
+                                              speed + " " + (int)deg, new Font("Courier New", 8), new SolidBrush(Color.White), posX + 7, posY - 5);
                     } else
                     {
                         posX = orgX;

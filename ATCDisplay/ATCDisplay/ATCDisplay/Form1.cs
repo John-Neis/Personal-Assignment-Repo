@@ -12,7 +12,7 @@ namespace ATCDisplay
 {
     public partial class ATCDisp : Form
     {
-        //private double angle;
+        private double angle;
         private Rectangle WinBorder;
         private Rectangle InfoPanel;
         private SolidBrush brush;
@@ -33,7 +33,7 @@ namespace ATCDisplay
             string[] randDest = {"KDLH", "KMSO", "KMSP", "CYWG", "KDEN" };
             bmp = Properties.Resources.terrain;
 
-            //angle = 0;
+            angle = 0;
             WinBorder = new Rectangle(1, 1, ClientSize.Width - 3, ClientSize.Height - 3);
             InfoPanel = new Rectangle(ClientSize.Width / 2, 0, ClientSize.Width / 2, ClientSize.Height);
             brush = new SolidBrush(Color.FromArgb(0, 0, 100));
@@ -90,6 +90,7 @@ namespace ATCDisplay
 
         private void ATCDisp_Load(object sender, EventArgs e)
         {
+            MessageBox.Show("TODO", "TODO: FIX PLANE HEADING ANGLES", MessageBoxButtons.OK);
             // TODO: Figure out what the h*ck we can use this function for
         }
 
@@ -119,6 +120,7 @@ namespace ATCDisplay
             showAirSpace(e, endLoop);
             showInfoPanel(e, endLoop);
 
+
             // Draws borders around the window. Makes things look nice and neat
             e.Graphics.DrawRectangle(penThick, WinBorder);
             e.Graphics.DrawLine(penThick, ClientSize.Width / 2, 0, ClientSize.Width / 2, ClientSize.Height);
@@ -147,9 +149,11 @@ namespace ATCDisplay
             int diameter = ClientSize.Width / 2 - 50;
             double alpha = degToRad(5);
             int radius = diameter / 2;
+            float HALF_PI = (float)Math.PI / 2;
 
             // Now, to make drawing the concentric circles where we want a bit easier, translate
             // the origin to a point roughly to the first quarter of the window from the left.
+            
             e.Graphics.TranslateTransform(25 + radius, ClientSize.Height / 2);
             e.Graphics.DrawEllipse(penThin, new Rectangle(-radius, -radius, diameter, diameter));
 
@@ -182,13 +186,15 @@ namespace ATCDisplay
             
             for (int i = 0; i < endLoop; i++)
             {
+                e.Graphics.RotateTransform(-90);
                 planes[i].show(e, penThinWhite, radius, simMode);
+                e.Graphics.RotateTransform(90);
                 planes[i].update();
             }
 
             // This draws a radar line to indicate direction of the radar dish on top of the control tower
-            //e.Graphics.DrawLine(penThin, 0, 0, (int)(radius * Math.Cos(angle)), (int)(radius * Math.Sin(angle)));
-            //angle += 0.01;
+            e.Graphics.DrawLine(penThin, 0, 0, (int)(radius * Math.Cos(angle)), (int)(radius * Math.Sin(angle)));
+            angle += 0.01;
 
             // Translate the origin back to the top left corner of the window
             e.Graphics.TranslateTransform(-1 * (25 + radius), -1 * (ClientSize.Height / 2));
@@ -197,6 +203,8 @@ namespace ATCDisplay
         
         private void ATCDisp_Click(object sender, EventArgs e)
         {
+            if (AnimTicker.Enabled) AnimTicker.Enabled = false;
+            else AnimTicker.Enabled = true;
             //using (var bmp = new Bitmap(ClientSize.Width, ClientSize.Height))
             //{
             //    this.DrawToBitmap(bmp, new Rectangle(0, 0, bmp.Width, bmp.Height));
