@@ -21,13 +21,17 @@ namespace ATCDisplay
         private Pen penThinPink;
         private Pen penThinWhite;
         private Pen penThin;
+        private int simMode;
+        private Image bmp;
         Airplane[] planes;
 
         public ATCDisp()
         {
             InitializeComponent();
+            simMode = 0;
             Random rand = new Random();
             string[] randDest = {"KDLH", "KMSO", "KMSP", "CYWG", "KDEN" };
+            bmp = Properties.Resources.terrain;
 
             //angle = 0;
             WinBorder = new Rectangle(1, 1, ClientSize.Width - 3, ClientSize.Height - 3);
@@ -47,8 +51,8 @@ namespace ATCDisplay
                 int radius = diameter / 2;
 
                 double rad = degToRad(rand.Next(0, 359));
-                int posX = (int)(radius * Math.Cos(rad));
-                int posY = (int)(radius * Math.Sin(rad));
+                int posX = (int)((6.0/5.0) * radius * Math.Cos(rad));
+                int posY = (int)((6.0/5.0) * radius * Math.Sin(rad));
                 int posAlt = rand.Next(1, 20) * 1500;
 
                 int vectX;
@@ -86,7 +90,7 @@ namespace ATCDisplay
 
         private void ATCDisp_Load(object sender, EventArgs e)
         {
-            // TODO: Figure out what the hell we can use this function for
+            // TODO: Figure out what the h*ck we can use this function for
         }
 
         private void ATCDisp_Paint(object sender, PaintEventArgs e)
@@ -95,8 +99,25 @@ namespace ATCDisplay
             // Then, we draw the information panel showing each plane's data.
             // Lastly, we draw the radar panel showing airspace and plane position
             e.Graphics.Clear(Color.FromArgb(0, 0, 80));
-            showInfoPanel(e);
-            showAirSpace(e);
+            e.Graphics.DrawImage(bmp, 0, 0, 960, 1080);
+
+            int endLoop = 0;
+            switch (simMode)
+            {
+                case 0:
+                    endLoop = planes.Length;
+                    break;
+                case 1:
+                case 2:
+                    endLoop = 1;
+                    break;
+                case 3:
+                case 4:
+                    endLoop = 2;
+                    break;
+            }
+            showAirSpace(e, endLoop);
+            showInfoPanel(e, endLoop);
 
             // Draws borders around the window. Makes things look nice and neat
             e.Graphics.DrawRectangle(penThick, WinBorder);
@@ -104,18 +125,18 @@ namespace ATCDisplay
         }
 
         #region DrawInfoPanel
-        private void showInfoPanel(PaintEventArgs e)
+        private void showInfoPanel(PaintEventArgs e, int endLoop)
         {
             e.Graphics.FillRectangle(brush, InfoPanel);
-            for (int i = 0; i < planes.Length; i++)
+            for (int i = 0; i < endLoop; i++)
             {
-                planes[i].PrintStats(e, 17 * ClientSize.Width / 32, 20 + i * 70);
+                planes[i].PrintStats(e, 17 * ClientSize.Width / 32, 20 + i * 70, simMode);
             }
         }
         #endregion
 
         #region DrawAirspace
-        private void showAirSpace(PaintEventArgs e)
+        private void showAirSpace(PaintEventArgs e, int endLoop)
         {
             /* 
                Some of the important numbers we're using:
@@ -155,10 +176,13 @@ namespace ATCDisplay
             e.Graphics.DrawLine(penThickPink, -10, 10, -10, -10);
             e.Graphics.DrawLine(penThinPink, -10, -ClientSize.Height / 2 + 3, -10, ClientSize.Height / 2 + 3);
 
-            // Draw and update the planes in the airspace on top of the display
-            for (int i = 0; i < planes.Length; i++)
+            // Draw and update the planes in the airspace on top of the display.
+            // Depending on what the Simulation mode is, we may want to only work 
+            // with fewer planes just to illustrate the point of the test case 
+            
+            for (int i = 0; i < endLoop; i++)
             {
-                planes[i].show(e, penThinWhite, radius);
+                planes[i].show(e, penThinWhite, radius, simMode);
                 planes[i].update();
             }
 
@@ -171,9 +195,42 @@ namespace ATCDisplay
         }
         #endregion
         
+        private void ATCDisp_Click(object sender, EventArgs e)
+        {
+            //using (var bmp = new Bitmap(ClientSize.Width, ClientSize.Height))
+            //{
+            //    this.DrawToBitmap(bmp, new Rectangle(0, 0, bmp.Width, bmp.Height));
+            //    bmp.Save(@"c:\Users\j.neis\Desktop\test.png");
+            //}
+
+        }
+
         private double degToRad(double angle)
         {
             return Math.PI * angle / 180.0;
         }
+
+        #region buttonsSimMode
+        private void BtnApproach_Click(object sender, EventArgs e)
+        {
+            simMode = 1;
+            planes[0].setPosVector(250, 400, 26, (int)(0.01 * 150 * Math.Cos(-3 * Math.PI / 4)), (int)(0.01 * 150 * Math.Sin(-3 * Math.PI / 4)), 150);
+        }
+
+        private void BtnDepart_Click(object sender, EventArgs e)
+        {
+            simMode = 2;
+        }
+
+        private void BtnColAvoid_Click(object sender, EventArgs e)
+        {
+            simMode = 3;
+        }
+
+        private void BtnCollide_Click(object sender, EventArgs e)
+        {
+            simMode = 4;
+        }
+        #endregion
     }
 }
