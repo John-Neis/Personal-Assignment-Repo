@@ -9,7 +9,6 @@ public class CouponPlayTime
         HashMap<String, Boolean> dictionary = new HashMap<String, Boolean>();
         Scanner keyboard = new Scanner(System.in);
         Object[] item = new Object[2];
-        int k = 0;
 
         System.out.print("Enter an item to purchase: ");
         item[0] = keyboard.nextLine();
@@ -40,17 +39,37 @@ public class CouponPlayTime
             System.out.println();
         }
 
+        Collections.sort(couponArray);
+        Collections.reverse(couponArray);
+
         for(int i = 0; i < couponArray.size(); i++)
         {
-            System.out.println("Coupon " + (i + 1) + " {");
-            System.out.println("\tScore: " + couponArray.get(i).score);
-            System.out.println("\tPrice: " + couponArray.get(i).price);
-            System.out.print("\tItems: ");
-            for(int j = 0; j < couponArray.get(i).items.length; j++) 
+            for(int j = 0; j < couponArray.get(i).items.length; j++)
             {
-                System.out.print(couponArray.get(i).items[j] + " ");
+                if(dictionary.containsKey(couponArray.get(i).items[j]))
+                {
+                    couponArray.get(i).score = 0;
+                }
             }
-            System.out.println("\n}\n");
+
+            for(int j = 0; j < couponArray.get(i).items.length; j++)
+            {
+                dictionary.put(couponArray.get(i).items[j], true);
+            }
+
+            if(couponArray.get(i).score == couponArray.get(i).items.length)
+            {
+                useList.add(couponArray.get(i));
+            }
+        }
+
+        for(int i = 0; i < useList.size(); i++)
+        {
+            System.out.println("Use Coupon " + (i + 1) + ":");
+            for(int j = 0; j < useList.get(i).items.length; j++)
+            {
+                System.out.print(useList.get(i).items[j] + " ");
+            }
         }
 
         keyboard.close();
