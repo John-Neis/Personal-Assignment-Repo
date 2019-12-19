@@ -1,0 +1,57 @@
+<!--
+    John Neis, ID: 8003486
+    j.neis@und.edu
+    Final Project: Create a website that allows a user to login, add, edit, and view
+    a college transcript.
+-->
+
+
+<html>
+    <header>
+        <title>Fall 2019 Final</title>
+        <link rel="icon" href="f19Icon.ico">
+        <style>
+            div.login {
+                position: relative;
+                background-color: lightskyblue;
+                border: 1px solid black;
+                top: 150px;
+                left: 30%;
+                width: 40%;
+            }
+            div.check {
+                position: relative;
+                width: 40%;
+                left: 25%;
+                top: 240px;
+                border: 1px solid black;
+            }
+            .button {
+                font-family: "Courier New";
+            }
+            p {
+                padding: 2px;
+                padding-left: 5%;
+                font-family: "Courier New";
+            }
+        </style>
+    </header>
+    <body bgcolor="#DDDDDD">
+        <div class=login>
+                <form action="/cgi-bin/login.pl" method=POST>
+                    <!--<div class=check>
+                        <input name="chkIndefSignin" type="checkbox" value="staySignIn">
+                        <font face="Courier New">Stay signed in</font>
+                    </div>-->
+                    <p align=center>Transcript Control Center</p>
+                    <hr />
+                    <p>Enter credentials</p>
+                    <p>Username: <input name="txtUserName" type=text maxlength=50></p>
+                    <p>Password: <input name="txtPassword" type=password maxlength=20></p>
+                    <p>
+                        <input class=button name="btnSignIn" type=submit value="Sign In">
+                    </p>
+                </form>
+        </div>
+    </body>
+</html>
