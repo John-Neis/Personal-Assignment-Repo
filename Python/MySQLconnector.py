@@ -1,6 +1,12 @@
 import mysql.connector
 from mysql.connector import errorcode
 
+
+def foo(x, y):
+    print(x + y)
+
+
+
 try:
     cnx = mysql.connector.connect(
         user='root', 
@@ -9,6 +15,7 @@ try:
         database='bankusers'
     )
     print("Database Connected")
+    foo(5, 10)
     cursor = cnx.cursor()
     sql = "SELECT * FROM users;"
 
